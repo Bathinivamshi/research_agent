@@ -1,0 +1,1 @@
+# Frontend\n\nPlaceholder for the Streamlit interface. Add the research form, job status, report viewer and source explorer here.\n

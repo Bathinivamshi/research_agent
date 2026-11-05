@@ -1,0 +1,38 @@
+
+# Core
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+python-dotenv
+
+# Gemini LLM and agent orchestration
+google-genai
+langchain
+langchain-google-genai
+langgraph
+
+# Search and web extraction
+tavily-python
+beautifulsoup4
+trafilatura
+httpx
+
+# PDF and RAG
+pymupdf
+sentence-transformers
+faiss-cpu
+
+# Database
+sqlalchemy
+psycopg[binary]
+
+# Evaluation and testing
+ragas
+deepeval
+pytest
+pytest-asyncio
+
+# Background processing
+redis
+celery
