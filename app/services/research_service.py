@@ -1,5 +1,7 @@
 
 import asyncio
+import hashlib
+from urllib.parse import urlsplit, urlunsplit
 
 from app.tools.web_search import web_search_service
 from app.tools.web_scraper import web_scraper_service
@@ -8,20 +10,44 @@ from app.tools.web_scraper import web_scraper_service
 class ResearchService:
 
     def __init__(self):
-
         self.max_concurrent_scrapes = 5
+
+    @staticmethod
+    def generate_source_id(url: str) -> str:
+        """Generate a deterministic ID from a normalized webpage URL."""
+
+        if not url or not url.strip():
+            raise ValueError("URL cannot be empty")
+
+        parsed = urlsplit(url.strip())
+
+        normalized_url = urlunsplit((
+            parsed.scheme.lower(),
+            parsed.netloc.lower(),
+            parsed.path.rstrip("/"),
+            parsed.query,
+            ""
+        ))
+
+        url_hash = hashlib.sha256(
+            normalized_url.encode("utf-8")
+        ).hexdigest()
+
+        return f"web_{url_hash[:16]}"
 
     async def scrape_source(self, search_result: dict) -> dict:
 
         url = search_result.get("url", "")
 
         try:
-
             scraped_data = await web_scraper_service.scrape(url)
 
+            final_url = scraped_data["url"]
+
             return {
+                "source_id": self.generate_source_id(final_url),
                 "title": search_result.get("title", ""),
-                "url": scraped_data["url"],
+                "url": final_url,
                 "content": scraped_data["content"],
                 "content_length": scraped_data["content_length"],
                 "score": search_result.get("score", 0.0),
@@ -30,8 +56,10 @@ class ResearchService:
             }
 
         except Exception as error:
-
             return {
+                "source_id": (
+                    self.generate_source_id(url) if url else None
+                ),
                 "title": search_result.get("title", ""),
                 "url": url,
                 "content": "",
@@ -51,23 +79,22 @@ class ResearchService:
         if not query or not query.strip():
             raise ValueError("Research query cannot be empty")
 
-        # Step 1: Search the web
+        if not 1 <= max_results <= 10:
+            raise ValueError("max_results must be between 1 and 10")
+
         search_results = await web_search_service.search(
             query=query,
             max_results=max_results
         )
 
-        # Step 2: Limit concurrent webpage requests
         semaphore = asyncio.Semaphore(
             self.max_concurrent_scrapes
         )
 
         async def scrape_with_limit(result):
-
             async with semaphore:
                 return await self.scrape_source(result)
 
-        # Step 3: Scrape multiple websites concurrently
         tasks = [
             scrape_with_limit(result)
             for result in search_results
@@ -75,20 +102,16 @@ class ResearchService:
 
         research_documents = await asyncio.gather(*tasks)
 
-        # Step 4: Separate successful and failed sources
         successful_documents = [
-            document
-            for document in research_documents
+            document for document in research_documents
             if document["status"] == "success"
         ]
 
         failed_documents = [
-            document
-            for document in research_documents
+            document for document in research_documents
             if document["status"] == "failed"
         ]
 
-        # Step 5: Return research data
         return {
             "query": query,
             "total_search_results": len(search_results),

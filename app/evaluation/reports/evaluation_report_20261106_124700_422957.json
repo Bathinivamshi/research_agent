@@ -1,0 +1,179 @@
+{
+    "total_evaluated_cases": 5,
+    "average_precision": 1.0,
+    "average_recall": 1.0,
+    "average_f1_score": 1.0,
+    "average_citation_accuracy": 1.0,
+    "average_evidence_coverage": 1.0,
+    "average_quote_accuracy": 1.0,
+    "case_results": [
+        {
+            "case_id": "test_001",
+            "category": "RAG",
+            "question": "What is Retrieval-Augmented Generation?",
+            "retrieval": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1_score": 1.0,
+                "relevant_retrieved": 2,
+                "total_retrieved": 2,
+                "total_relevant": 2
+            },
+            "citations": {
+                "citation_accuracy": 1.0,
+                "valid_citations": 2,
+                "invalid_citations": 0,
+                "total_citations": 2
+            },
+            "evidence_coverage": 1.0,
+            "quote_accuracy": 1.0,
+            "ragas_retrieval": {
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "f1_score": 1.0,
+                "total_retrieved": 2,
+                "total_relevant": 2,
+                "total_matched": 2,
+                "matched_ids": [
+                    "doc_001",
+                    "doc_002"
+                ]
+            }
+        },
+        {
+            "case_id": "test_002",
+            "category": "Agentic AI",
+            "question": "What is an AI agent?",
+            "retrieval": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1_score": 1.0,
+                "relevant_retrieved": 2,
+                "total_retrieved": 2,
+                "total_relevant": 2
+            },
+            "citations": {
+                "citation_accuracy": 1.0,
+                "valid_citations": 1,
+                "invalid_citations": 0,
+                "total_citations": 1
+            },
+            "evidence_coverage": 1.0,
+            "quote_accuracy": 1.0,
+            "ragas_retrieval": {
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "f1_score": 1.0,
+                "total_retrieved": 2,
+                "total_relevant": 2,
+                "total_matched": 2,
+                "matched_ids": [
+                    "doc_003",
+                    "doc_004"
+                ]
+            }
+        },
+        {
+            "case_id": "test_003",
+            "category": "LLM Evaluation",
+            "question": "What is faithfulness in LLM evaluation?",
+            "retrieval": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1_score": 1.0,
+                "relevant_retrieved": 2,
+                "total_retrieved": 2,
+                "total_relevant": 2
+            },
+            "citations": {
+                "citation_accuracy": 1.0,
+                "valid_citations": 1,
+                "invalid_citations": 0,
+                "total_citations": 1
+            },
+            "evidence_coverage": 1.0,
+            "quote_accuracy": 1.0,
+            "ragas_retrieval": {
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "f1_score": 1.0,
+                "total_retrieved": 2,
+                "total_relevant": 2,
+                "total_matched": 2,
+                "matched_ids": [
+                    "doc_005",
+                    "doc_006"
+                ]
+            }
+        },
+        {
+            "case_id": "test_004",
+            "category": "Embeddings",
+            "question": "What are text embeddings?",
+            "retrieval": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1_score": 1.0,
+                "relevant_retrieved": 2,
+                "total_retrieved": 2,
+                "total_relevant": 2
+            },
+            "citations": {
+                "citation_accuracy": 1.0,
+                "valid_citations": 1,
+                "invalid_citations": 0,
+                "total_citations": 1
+            },
+            "evidence_coverage": 1.0,
+            "quote_accuracy": 1.0,
+            "ragas_retrieval": {
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "f1_score": 1.0,
+                "total_retrieved": 2,
+                "total_relevant": 2,
+                "total_matched": 2,
+                "matched_ids": [
+                    "doc_007",
+                    "doc_008"
+                ]
+            }
+        },
+        {
+            "case_id": "test_005",
+            "category": "Vector Databases",
+            "question": "Why are vector databases used in RAG systems?",
+            "retrieval": {
+                "precision": 1.0,
+                "recall": 1.0,
+                "f1_score": 1.0,
+                "relevant_retrieved": 2,
+                "total_retrieved": 2,
+                "total_relevant": 2
+            },
+            "citations": {
+                "citation_accuracy": 1.0,
+                "valid_citations": 1,
+                "invalid_citations": 0,
+                "total_citations": 1
+            },
+            "evidence_coverage": 1.0,
+            "quote_accuracy": 1.0,
+            "ragas_retrieval": {
+                "context_precision": 1.0,
+                "context_recall": 1.0,
+                "f1_score": 1.0,
+                "total_retrieved": 2,
+                "total_relevant": 2,
+                "total_matched": 2,
+                "matched_ids": [
+                    "doc_009",
+                    "doc_010"
+                ]
+            }
+        }
+    ],
+    "average_ragas_context_precision": 1.0,
+    "average_ragas_context_recall": 1.0,
+    "average_ragas_f1_score": 1.0
+}

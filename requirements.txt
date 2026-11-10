@@ -36,3 +36,5 @@ pytest-asyncio
 # Background processing
 redis
 celery
+python-multipart
+langchain-text-splitters

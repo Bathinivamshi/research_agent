@@ -1,0 +1,43 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Conda and local environments
+.conda/
+.ai/
+
+# Git
+.git/
+.gitignore
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# Tests and evaluation artifacts
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Local data and generated files
+data/
+logs/
+*.log
+
+# Local resume and documents
+*.pdf
+*.docx
+
+# OS files
+.DS_Store
+Thumbs.db
